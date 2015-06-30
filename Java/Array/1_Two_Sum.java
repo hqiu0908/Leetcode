@@ -15,34 +15,32 @@ Output: index1=1, index2=2
 */
 
 public class Solution {
-    public int[] twoSum(int[] numbers, int target) {
-        if (numbers == null || numbers.length < 2) {
-            return null;
+    public int[] twoSum(int[] nums, int target) {
+        int[] results = new int[2];
+        
+        if (nums == null || nums.length == 0) {
+            results[0] = 0;
+            results[1] = 0;
+            return results;
         }
         
-        int[] result = new int[2];
         HashMap<Integer, Integer> hashmap = new HashMap<Integer, Integer>();
         
-        for (int i = 0; i < numbers.length; i++) {
-            hashmap.put(numbers[i], i);    
-        }
-        
-        for (int i = 0; i < numbers.length; i++) {
-            int val = target - numbers[i];
+        for (int i = 0; i < nums.length; i++) {
+            int key = target - nums[i];
             
-            if (hashmap.containsKey(val)) {
-                int index1 = i;
-                int index2 = hashmap.get(val);
-                
-                if (index1 != index2) {
-                    result[0] = index1 + 1;
-                    result[1] = index2 + 1;
-                    break;
-                }
-            } 
+            if (hashmap.containsKey(key)) {
+                int val = hashmap.get(key);
+                results[0] = val + 1;
+                results[1] = i + 1;
+                break;
+            }
+            
+            hashmap.put(nums[i], i);
         }
         
-        return result;
+        return results;
     }
 }
+
 
