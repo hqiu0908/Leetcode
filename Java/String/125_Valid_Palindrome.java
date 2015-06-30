@@ -23,11 +23,11 @@ public class Solution {
         int j = s.length() - 1;
         
         while (i < j) {
-            while ( !isAlphaNumeric(s.charAt(i)) && (i < j) ) {
+            while ( !Character.isLetterOrDigit(s.charAt(i)) && (i < j) ) {
                 i++;
             }
             
-            while ( !isAlphaNumeric(s.charAt(j)) && (i < j) ) {
+            while ( !Character.isLetterOrDigit(s.charAt(j)) && (i < j) ) {
                 j--;
             }
             
@@ -41,9 +41,5 @@ public class Solution {
         
         return true;
     }
-    
-    public boolean isAlphaNumeric(char c) {
-        return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-            || (c >= '0' && c <= '9'));
-    }
 }
+

@@ -19,9 +19,7 @@ public class Solution {
         int[] results = new int[2];
         
         if (nums == null || nums.length == 0) {
-            results[0] = 0;
-            results[1] = 0;
-            return results;
+            return new int[]{-1, -1};
         }
         
         HashMap<Integer, Integer> hashmap = new HashMap<Integer, Integer>();
