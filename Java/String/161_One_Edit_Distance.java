@@ -46,7 +46,7 @@ public class OneEditDistance {
 			return (shift > 0);
 		}
 		
-		// Note!!: Jump the current unequal char if two strings 
+		// Note!!: Jump the current inequal char if two strings 
 		// have the same length.
 		if (shift == 0) {
 			i++;
