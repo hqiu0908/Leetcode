@@ -27,10 +27,10 @@ public class Solution {
         
         while (x != 0) {
             // Handle overflow
-            // The last reversed digit is guaranteed to be 1 or 2 due to 
-            // constraint of input x (integer)
+            // The last reversed digit is guaranteed to be 1 or 2 if x has 10 digits 
+            // due to constraint of input x (integer)
             // so res == 214748364 won't overflow
-            if ((res > Integer.MAX_VALUE/ 10) || (res < Integer.MIN_VALUE / 10)) {
+            if ((res > Integer.MAX_VALUE / 10) || (res < Integer.MIN_VALUE / 10)) {
                 return 0;
             }
             
@@ -41,3 +41,4 @@ public class Solution {
         return res;
     }
 }
+

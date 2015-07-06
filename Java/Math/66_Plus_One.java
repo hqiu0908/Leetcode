@@ -65,3 +65,44 @@ public class Solution {
     }
 }
 
+// Use ArrayList:
+
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
+
+public class PlusOne {
+    
+    public List<Integer> plusOne(List<Integer> digits) {        
+        if (digits == null) {
+            return null;
+        }
+        
+        for (int i = digits.size() - 1; i >= 0; i--) {
+            if (digits.get(i) < 9) {
+                digits.set(i, digits.get(i) + 1);
+                return digits;
+            } else {
+                digits.set(i, 0);
+            }
+        }
+        
+        digits.add(0, 1);
+        return digits;
+    }
+    
+    public static void main (String[] args) {
+        PlusOne plusOne = new PlusOne();
+        
+        List<Integer> digits = new ArrayList<Integer>();
+        Collections.addAll(digits, 9, 9, 9);
+        
+        List<Integer> results = new ArrayList<Integer>();       
+        results = plusOne.plusOne(digits);
+        
+        for (int i = 0; i < results.size(); i++) {
+            System.out.print(results.get(i) + " ");
+        }
+    }
+}
+
