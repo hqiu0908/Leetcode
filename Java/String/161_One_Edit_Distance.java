@@ -18,6 +18,7 @@ insert operation in T.
 
 */
 
+
 public class OneEditDistance {
     public boolean isOneEditDistance(String s, String t) {
         if (s == null || t == null) {
@@ -62,6 +63,39 @@ public class OneEditDistance {
         return (i == s.length());
     }
     
+    public boolean isOneEditDistance2(String s, String t) {
+        int m = s.length();
+        int n = t.length();
+        
+        if (m > n) {
+            return isOneEditDistance2(t, s);
+        }
+        
+        int shift = n - m;
+        if (shift > 1) {
+            return false;
+        }
+        
+        int editDistance = shift;
+        for (int i = 0, j = 0; i < m; i++, j++) {
+            if (s.charAt(i) != t.charAt(j)) {
+                if (shift == 0) {
+                    editDistance++;
+                
+                    if (editDistance > 1) {
+                        return false;
+                    }
+                } else {                    
+                    // Needs to compare the current char in s again
+                    // with the next char in t
+                    i--;
+                }
+            }
+        }
+        
+        return editDistance == 1;
+    }
+    
     public static void main(String[] args) {
         OneEditDistance oneEdit = new OneEditDistance();
         
@@ -69,20 +103,24 @@ public class OneEditDistance {
         String s = "abcde";
         String t = "abxde";
         System.out.println(oneEdit.isOneEditDistance(s, t));
+        System.out.println(oneEdit.isOneEditDistance2(s, t));
         
         // Insert
         s = "abcxde";
         t = "abcde";
         System.out.println(oneEdit.isOneEditDistance(s, t));
+        System.out.println(oneEdit.isOneEditDistance2(s, t));
         
         // Append
         s = "abcde";
         t = "abcdex";
         System.out.println(oneEdit.isOneEditDistance(s, t));
+        System.out.println(oneEdit.isOneEditDistance2(s, t));
             
         s = "a";
         t = "";
         System.out.println(oneEdit.isOneEditDistance(s, t));
+        System.out.println(oneEdit.isOneEditDistance2(s, t));
         
         // Wrong case:
         
@@ -90,15 +128,18 @@ public class OneEditDistance {
         s = "abcde";
         t = "abcde";
         System.out.println(oneEdit.isOneEditDistance(s, t));
+        System.out.println(oneEdit.isOneEditDistance2(s, t));
         
         s = "";
         t = "";
         System.out.println(oneEdit.isOneEditDistance(s, t));
+        System.out.println(oneEdit.isOneEditDistance2(s, t));
         
         // Two different chars
         s = "abcde";
         t = "abcxx";
         System.out.println(oneEdit.isOneEditDistance(s, t));
+        System.out.println(oneEdit.isOneEditDistance2(s, t));
     }
 }
 
