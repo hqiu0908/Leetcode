@@ -33,8 +33,8 @@ public class MissingRanges {
         return ranges;
     }
     
-    public String getRange(int start, int end) {
-        return (start == end) ? String.valueOf(start) : start + "->" + end;
+    public String getRange(int from, int to) {
+        return (from == to) ? String.valueOf(from) : from + "->" + to;
     }
     
     public void printResults(List<String> list) {
