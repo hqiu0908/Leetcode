@@ -16,28 +16,24 @@ which the depth of the two subtrees of every node never differ by more than 1.
  *     TreeNode(int x) { val = x; }
  * }
  */
+// O(n) runtime, O(n) stack space – Bottom-up recursion
 public class Solution {
     public boolean isBalanced(TreeNode root) {
-        int height = getHeight(root);
-        return (height != -1);
+        return maxDepth(root) != -1;
     }
     
-    public int getHeight(TreeNode root) {
+    private int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;
         }
         
-        int leftHeight = getHeight(root.left);
-        int rightHeight = getHeight(root.right);
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
         
-        if ((leftHeight == -1) || (rightHeight == -1)) {
+        if ((left == -1) || (right == -1) || (Math.abs(left - right) > 1)) {
             return -1;
         }
         
-        if (Math.abs(leftHeight - rightHeight) <= 1) {
-            return Math.max(leftHeight, rightHeight) + 1;
-        } else {
-            return -1;
-        }
+        return Math.max(left, right) + 1;
     }
 }

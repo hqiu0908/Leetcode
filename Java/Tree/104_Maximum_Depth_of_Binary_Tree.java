@@ -16,6 +16,7 @@ node down to the farthest leaf node.
  *     TreeNode(int x) { val = x; }
  * }
  */
+// O(n) runtime, O(log n) space – Recursion
 public class Solution {
     
     // Max depth of a tree = max (depth of left child, 
