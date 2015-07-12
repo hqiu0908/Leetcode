@@ -11,44 +11,37 @@ getMin() -- Retrieve the minimum element in the stack.
 */
 
 class MinStack {
-    private Stack<Integer> origStack = new Stack<Integer>();
-    private Stack<Integer> minStack = new Stack<Integer>();  
+    Stack<Integer> stack = new Stack<Integer>();
+    Stack<Integer> minStack = new Stack<Integer>();
     
     public void push(int x) {
-        origStack.push(x);
+        stack.push(x);
         
-        if (minStack.empty()) {
+        if (minStack.isEmpty() || x <= minStack.peek()) {
             minStack.push(x);
-        } else {
-            // consider the duplicated element
-            if (x <= minStack.peek()) {
-                minStack.push(x);
-            }
         }
     }
 
     public void pop() {
-        if (origStack.empty()) {
-            return;
-        }
         
-        int topVal = origStack.pop();
+        // Note: Should use 'equals' instead of '==' here!!
         
-        if (topVal == minStack.peek()) {
+        // '==' operator compares the value of two object references to see whether 
+        // they refer to the same String instance. (primitive type comparisons and 
+        // is used for memory address comparison, object equality)
+        
+        // 'equals()' evaluates to the comparison of values in the objects. 
+        // (functional equality).
+        if (stack.pop().equals(minStack.peek())) {
             minStack.pop();
         }
     }
 
     public int top() {
-        return origStack.peek();
+        return stack.peek();
     }
 
     public int getMin() {
-        if (minStack.empty()) {
-            return Integer.MIN_VALUE;
-        }
-            
         return minStack.peek();
     }
 }
-
