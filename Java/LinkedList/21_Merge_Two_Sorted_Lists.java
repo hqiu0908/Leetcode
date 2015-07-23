@@ -23,6 +23,7 @@ public class Solution {
             return l1;
         }
         
+        // Dummy node to avoid the edge case for initialize the head
         ListNode dummy = new ListNode(0);
         ListNode head = dummy;
         
