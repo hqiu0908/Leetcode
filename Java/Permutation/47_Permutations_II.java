@@ -32,6 +32,7 @@ public class Solution {
         List<Integer> list, int[] nums, boolean[] visited) {
         if (list.size() == nums.length) {
             results.add(new ArrayList<Integer>(list));
+            return;
         }
         
         for (int i = 0; i < nums.length; i++) {
