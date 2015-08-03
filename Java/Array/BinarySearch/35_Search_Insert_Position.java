@@ -23,21 +23,21 @@ public class Solution {
         
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
-            
-            if (target == nums[mid]) {
+            if (nums[mid] == target) {
                 return mid;
-            } else if (target > nums[mid]) {
+            } else if (nums[mid] < target) {
                 start = mid;
             } else {
                 end = mid;
             }
         }
         
-        if (target <= nums[start]) {
+        // Find the first position >= target
+        if (nums[start] >= target) {
             return start;
         }
         
-        if (target <= nums[end]) {
+        if (nums[end] >= target) {
             return end;
         }
         
