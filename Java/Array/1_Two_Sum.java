@@ -16,28 +16,21 @@ Output: index1=1, index2=2
 
 public class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int[] results = new int[2];
-        
-        if (nums == null || nums.length == 0) {
-            return new int[]{-1, -1};
-        }
-        
+        int[] res = new int[2];
         HashMap<Integer, Integer> hashmap = new HashMap<Integer, Integer>();
         
         for (int i = 0; i < nums.length; i++) {
             int key = target - nums[i];
             
             if (hashmap.containsKey(key)) {
-                int val = hashmap.get(key);
-                results[0] = val + 1;
-                results[1] = i + 1;
-                break;
+                res[0] = hashmap.get(key);
+                res[1] = i;
             }
             
             hashmap.put(nums[i], i);
         }
         
-        return results;
+        return res;
     }
 }
 
